@@ -1,2 +1,27 @@
-# The pool of tears
+# Parte 1
+
+A partir del capítulo 2 del libro: J. Angrist and J. Pischke (AP): “Mostly harmless econometrics:
+an empiricist’s companion”, Princeton University Press, 2009.
+Responda las siguientes preguntas.
+
+a) Explique en que consiste el problema de selección
+
+La investigación científica propone un marco metodológico el cual consiste en lograr que se cumplan dos criterios importantes en el diseño de investigación; representatividad y certeza en el estudio. Para lograrlo se utilizan diferentes metodologías probabilísticas y no probabilísticas. Es aquí donde aparece el problema de la selección, el cual se refiere al aspecto del diseño de un estudio. Es decir, a la falta de criterios o aplicación de técnicas adecuadas para lograr que se respeten los dos criterios mencionados. En particular, a una incorrecta selección de la muestra (individuos) que puede ocasionar errores sistemáticos no deseados. Esta incorrecta selección muestral puede ocasionar efectos en donde los resultados obtenidos no serán extrapolables o confiables a toda una poblacion (pues por términos de coste-eficiencia se trabaja sobre muestras para extrapolar las conclusiones a una poblacion objetivo). 
+
+________________________________________________________________________________
+
+b) Describa un ejemplo de una evaluación en la que se pueda incurrir en problema de selección
+(No use los ejemplos de la lectura)
+
+Un estudio que quiera medir el impacto de la educación en los ingresos de los individuos; este estudio debe tener un cauteloso diseño de investigación para no cometer errores de sesgos de selección muestral ya que si, por ejemplo; este estudio se realiza en únicamente establecimientos educativos privados. Lógicamente, la mayoría de los individuos que asisten a este tipo de establecimientos son personas acomodadas en términos de ingresos. Por lo que se estaría sesgando el estudio hacia una sobreestimación de los resultados.
+
+________________________________________________________________________________
+
+c) Derive matemáticamente a que es igual el sesgo de selección.
+
+________________________________________________________________________________
+
+d) Describa en sus palabras porque es importante la aleatorización para solucionar el sesgo de selección
+
+Debido a la naturaleza intrínseca que implica el sesgo de selección el cual consiste precisamente en ser objetivos al momento de diseñar el estudio y muestreo de una poblacion. La Aleatorización aparece como una herramienta que permite solucionar este problema de falta de objetividad e imparcialidad puesto que deja este proceso “al azar”. Lo cual permite que la distribución de probabilidad sea lo mas optima posible para trabajar y que se cumplan los dos criterios de representatividad y certeza.
 
