@@ -1,0 +1,125 @@
+# Punto 2
+
+Para la siguiente actividad es necesario que entre un código do file/Script, las bases de datos antes de cargar en Stata/R y las bases finales luego de todas las modificaciones que considere pertinente.
+
+a) Seleccione 2 variables económicas que tengan una relación teórica, describa que dice la teoría sobre esta relación y su interpretación sobre la forma de esta relación.
+
+La teoría económica presenta una relación desde la perspectiva macroeconómica en la cual en la ecuación fundamental del PIB a medida que se tiene mayor ingreso, aumenta el consumo de bienes ya sea importados o nacionales. Ademas, esta misma relación se puede observar desde la perspectiva microeconómica donde a mayor ingreso, mayor es el consumo de bienes de un individuo. Por lo anterior, es lógico afirmar que la forma de la relación de estas dos variables va a ser fuertemente asociadas y de sentido directo. 
+
+________________________________________________________________________________
+
+b)  Busque las bases de datos adecuadas para representar ambas variables económicas. Describa la fuente de la información (ej. DANE, Banco mundial, Banco de la república, etc)
+
+PIB per capita: World Data Bank 
+% del PIB en importaciones: World Data Bank
+
+________________________________________________________________________________
+
+c) Haga las transformaciones que considere pertinentes para poder ver la relación entre ambas variables.
+
+Empezaremos por la importacion de la base de datoss:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Importaciones
+library(readxl)
+API_NE_IMP_GNFS_ZS_DS2_en_excel_v2_4353198 <- read_excel("~/Jorge_uni/ULTIMO SEMESTRE/Eval de impacto/API_NE.IMP.GNFS.ZS_DS2_en_excel_v2_4353198.xls")
+View(API_NE_IMP_GNFS_ZS_DS2_en_excel_v2_4353198)
+Imports<-API_NE_IMP_GNFS_ZS_DS2_en_excel_v2_4353198
+
+```
+
+Posteriormente, realizaremos la adecuacion pertinente de los datos:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Limpieza de datos
+Imports=Imports[-c(2)]
+Imports=Imports[-c(3)]
+Imports$...3<-NULL
+Imports<-subset(Imports,Imports$`Data Source`=="Colombia")
+Imports<-t(Imports)
+Imports=Imports[-c(1,1)]
+Imports<-as.numeric(Imports)
+Imports<-as.data.frame(Imports)
+colnames(Imports)<-c("% PIB Imports")
+newnames<-as.character(seq.int(1960,2021,1))
+row.names(Imports)<-newnames
+
+# Generamos el CSV con la base de datos transformada.
+write.csv(Imports, file="Imports.csv")
+```
+
+Proseguimos con la segunda base de datos:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+API_NY_GDP_PCAP_KD_DS2_en_excel_v2_4354025 <- read_excel("~/Jorge_uni/ULTIMO SEMESTRE/Eval de impacto/API_NY.GDP.PCAP.KD_DS2_en_excel_v2_4354025.xls")
+GDP<-API_NY_GDP_PCAP_KD_DS2_en_excel_v2_4354025
+```
+
+Analogamente, realizamos el tratamiento de la base de datos.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Limpieza de datos
+GDP$`World Development Indicators`<-NULL
+GDP$...3<-NULL
+GDP$...4<-NULL
+GDP<-subset(GDP,GDP$`Data Source`=="Colombia")
+GDP<-t(GDP)
+GDP=GDP[-c(1,1)]
+GDP<-as.numeric(GDP)
+GDP<-as.data.frame(GDP)
+colnames(GDP)<-c("PIB Per capita")
+row.names(GDP)<-newnames
+
+# Archivo CSV
+write.csv(GDP,file="GDP.csv")
+```
+
+Por ultimo, combinamos nuestras dataframes para poder realizar los procedimientos estadisticos solicitados.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Combinar bases de datos
+Base<-merge(GDP,Imports,by=0,all=TRUE)
+colnames(Base)<-c("A?o", "PIB per capita","% PIB Imports")
+Base$`A?o`<-NULL
+```
+
+Grafico de correlacion:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Grafico de correlacion
+library(PerformanceAnalytics)
+chart.Correlation(Base, histogram = TRUE, method = "pearson")
+```
+
+Grafico de dispersion:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Grafico de dispersion
+library(ggplot2)
+g<-ggplot(Base, aes(x=Base$`PIB per capita`, y=Base$`% PIB Imports`))+geom_point()
+g<-g+theme_minimal()+ggtitle("Grafico de dispersion")+labs(x="PIB per capita", y="% PIB en Importaciones",caption="Autor: Jorge Orozco")
+g
+```
+
+Modelo de regresion:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Modelo
+modelo<-lm(Base$`PIB per capita`~Base$`% PIB Imports`,data=Base)
+summary(modelo)
+ggplot(data=Base, aes(y=Base$`% PIB Imports`,x=Base$`PIB per capita`))+geom_point(col="blue")+geom_smooth(method="lm",col="black",size=0.5)+labs(x="Pib per capita",y="% del PIB en importaciones")
+```
+
+Modelo de regresion cuadratico:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+modelo2<-lm(Base$`PIB per capita`~Base$`% PIB Imports`^2)
+summary(modelo2)
+ggplot(data=Base, aes(y=Base$`PIB per capita`,x=Base$`PIB per capita`^2))+geom_point(col="blue")+geom_smooth(method="lm",col="black",size=0.5)+labs(x="Pib per capita",y="% del PIB en importaciones")
+```
+_______________________________________________________________________________
+
+e) Interprete los resultados en función de la teoría que recopilo en el literal a.
+
+
+
