@@ -23,7 +23,7 @@
 <meta name="author" content="Jorge Orozco" />
 
 
-<meta name="date" content="2022-08-23" />
+<meta name="date" content="2022-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,7 +138,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Evaluación de impactos</a></li>
 <li class="chapter" data-level="2" data-path="punto-1.html"><a href="punto-1.html"><i class="fa fa-check"></i><b>2</b> Punto 1</a></li>
-<li class="chapter" data-level="3" data-path="punto-2.html"><a href="punto-2.html"><i class="fa fa-check"></i><b>3</b> Punto 2</a></li>
+<li class="chapter" data-level="3" data-path="punto-2.html"><a href="punto-2.html"><i class="fa fa-check"></i><b>3</b> Punto 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="punto-2.html"><a href="punto-2.html#referencias"><i class="fa fa-check"></i><b>3.1</b> Referencias</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -162,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Taller 1</h1>
 <p class="author"><em>Jorge Orozco</em></p>
-<p class="date"><em>2022-08-23</em></p>
+<p class="date"><em>2022-08-25</em></p>
 </div>
 <div id="evaluación-de-impactos" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number"> 1</span> Evaluación de impactos<a href="index.html#evaluación-de-impactos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -228,6 +231,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

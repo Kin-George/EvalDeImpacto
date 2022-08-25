@@ -23,7 +23,7 @@
 <meta name="author" content="Jorge Orozco" />
 
 
-<meta name="date" content="2022-08-23" />
+<meta name="date" content="2022-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,7 +138,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Evaluación de impactos</a></li>
 <li class="chapter" data-level="2" data-path="punto-1.html"><a href="punto-1.html"><i class="fa fa-check"></i><b>2</b> Punto 1</a></li>
-<li class="chapter" data-level="3" data-path="punto-2.html"><a href="punto-2.html"><i class="fa fa-check"></i><b>3</b> Punto 2</a></li>
+<li class="chapter" data-level="3" data-path="punto-2.html"><a href="punto-2.html"><i class="fa fa-check"></i><b>3</b> Punto 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="punto-2.html"><a href="punto-2.html#referencias"><i class="fa fa-check"></i><b>3.1</b> Referencias</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -165,13 +168,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Seleccione 2 variables económicas que tengan una relación teórica, describa que dice la teoría sobre esta relación y su interpretación sobre la forma de esta relación.</li>
 </ol>
-<p>La teoría económica presenta una relación desde la perspectiva macroeconómica en la cual en la ecuación fundamental del PIB a medida que se tiene mayor ingreso, aumenta el consumo de bienes ya sea importados o nacionales. Ademas, esta misma relación se puede observar desde la perspectiva microeconómica donde a mayor ingreso, mayor es el consumo de bienes de un individuo. Por lo anterior, es lógico afirmar que la forma de la relación de estas dos variables va a ser fuertemente asociadas y de sentido directo.</p>
+<p>La teoría económica presenta una relación desde la perspectiva macroeconómica en la cual en la ecuación fundamental del PIB a medida que se tiene mayor ingreso, aumenta el consumo de bienes ya sea importados o nacionales. Ademas, esta misma relación se puede observar desde la perspectiva microeconómica donde a mayor ingreso, mayor es el consumo de bienes de un individuo. Por lo anterior, es posible afirmar que la forma de la relación de estas dos variables va a ser fuertemente asociadas y de sentido directo.</p>
 <hr />
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Busque las bases de datos adecuadas para representar ambas variables económicas. Describa la fuente de la información (ej. DANE, Banco mundial, Banco de la república, etc)</li>
+<li>Busque las bases de datos adecuadas para representar ambas variables económicas. Describa la fuente de la información (ej. DANE, Banco mundial, Banco de la república, etc).</li>
 </ol>
-<p>PIB per capita: World Data Bank
-% del PIB en importaciones: World Data Bank</p>
+<p>Se utilizarán las siguientes bases de datos en un periodo de tiempo de 60 años para verificar la relación económica estudiada en el país Colombia.</p>
+<p>PIB per capita: World Data Bank.</p>
+<p>% del PIB en importaciones: World Data Bank.</p>
 <hr />
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Haga las transformaciones que considere pertinentes para poder ver la relación entre ambas variables.</li>
@@ -225,14 +229,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="punto-2.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico de correlacion</span></span>
 <span id="cb6-2"><a href="punto-2.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PerformanceAnalytics)</span>
 <span id="cb6-3"><a href="punto-2.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chart.Correlation</span>(Base, <span class="at">histogram =</span> <span class="cn">TRUE</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Grafico de dispersion:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="punto-2.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico de dispersion</span></span>
 <span id="cb7-2"><a href="punto-2.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-3"><a href="punto-2.html#cb7-3" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Base, <span class="fu">aes</span>(<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>, <span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>))<span class="sc">+</span><span class="fu">geom_point</span>()</span>
 <span id="cb7-4"><a href="punto-2.html#cb7-4" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span>g<span class="sc">+</span><span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;Grafico de dispersion&quot;</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;PIB per capita&quot;</span>, <span class="at">y=</span><span class="st">&quot;% PIB en Importaciones&quot;</span>,<span class="at">caption=</span><span class="st">&quot;Autor: Jorge Orozco&quot;</span>)</span>
 <span id="cb7-5"><a href="punto-2.html#cb7-5" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Modelo de regresion:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="punto-2.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo</span></span>
 <span id="cb8-2"><a href="punto-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>,<span class="at">data=</span>Base)</span>
@@ -256,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.7195, Adjusted R-squared:  0.7149 
 ## F-statistic: 153.9 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="punto-2.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Base, <span class="fu">aes</span>(<span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>,<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Pib per capita&quot;</span>,<span class="at">y=</span><span class="st">&quot;% del PIB en importaciones&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Modelo de regresion cuadratico:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="punto-2.html#cb11-1" aria-hidden="true" tabindex="-1"></a>modelo2<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb11-2"><a href="punto-2.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)</span></code></pre></div>
@@ -279,12 +283,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.7195, Adjusted R-squared:  0.7149 
 ## F-statistic: 153.9 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="punto-2.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Base, <span class="fu">aes</span>(<span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>,<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Pib per capita&quot;</span>,<span class="at">y=</span><span class="st">&quot;% del PIB en importaciones&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 _______________________________________________________________________________</p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Interprete los resultados en función de la teoría que recopilo en el literal a.</li>
 </ol>
+<p>Los resultados obtenidos en la gráfica de correlación nos marcan un grado de asociación de 0.85 por lo cual podemos inferir que nuestras dos variables están fuertemente relacionadas. Este grado de relación indica una asociación fuerte y positiva. Ademas, los resultados de la gráfica de dispersión nos confirman doblemente esta relación positiva y directa entre las variables. Se puede observar como los puntos alrededor de la nube están distribuidos de buena manera y no parece haber un sesgo, aun así, se sugiere hacer una prueba para comprobarlo. Por otro lado, desde el punto de vista del modelo de regresión podemos observar; un grado de significancia elevado (tres estrellas para nuestra variable) y una relación positiva entre esta y la variable explicada. Un coeficiente de correlación (r2) de 0.71 y una p - value que indica significancia estadística.</p>
+<p>Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra un comportamiento exponencial lo cual ratifica los resultados anteriores.</p>
+<hr />
+<div id="referencias" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Referencias<a href="punto-2.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Blanchard O. Melino A. &amp; Johnson D. R. (2003). Macroeconomics (2nd Canadian). Prentice Hall.</p>
+<p>Acemoglu, D., Laibson, D., &amp; List, J. (2017). Economía ([edition missing]). Antoni Bosch Editor, S.A. Retrieved from <a href="https://www.perlego.com/book/2809312/economa-pdf" class="uri">https://www.perlego.com/book/2809312/economa-pdf</a> (Original work published 2017)</p>
+<p>Wooldridge, J. M. (2010). INTRODUCCION A LA ECONOMETRIA: UN ENFOQUE MODERNO (4a. ed.). MEXICO: CENGAGE LEARNING.</p>
 
+</div>
 </div>
             </section>
 
@@ -346,6 +359,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

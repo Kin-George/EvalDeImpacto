@@ -4,16 +4,20 @@ Para la siguiente actividad es necesario que entre un código do file/Script, la
 
 a) Seleccione 2 variables económicas que tengan una relación teórica, describa que dice la teoría sobre esta relación y su interpretación sobre la forma de esta relación.
 
-La teoría económica presenta una relación desde la perspectiva macroeconómica en la cual en la ecuación fundamental del PIB a medida que se tiene mayor ingreso, aumenta el consumo de bienes ya sea importados o nacionales. Ademas, esta misma relación se puede observar desde la perspectiva microeconómica donde a mayor ingreso, mayor es el consumo de bienes de un individuo. Por lo anterior, es lógico afirmar que la forma de la relación de estas dos variables va a ser fuertemente asociadas y de sentido directo. 
+La teoría económica presenta una relación desde la perspectiva macroeconómica en la cual en la ecuación fundamental del PIB a medida que se tiene mayor ingreso, aumenta el consumo de bienes ya sea importados o nacionales. Ademas, esta misma relación se puede observar desde la perspectiva microeconómica donde a mayor ingreso, mayor es el consumo de bienes de un individuo. Por lo anterior, es posible afirmar que la forma de la relación de estas dos variables va a ser fuertemente asociadas y de sentido directo. 
 
 ________________________________________________________________________________
 
-b)  Busque las bases de datos adecuadas para representar ambas variables económicas. Describa la fuente de la información (ej. DANE, Banco mundial, Banco de la república, etc)
+b)  Busque las bases de datos adecuadas para representar ambas variables económicas. Describa la fuente de la información (ej. DANE, Banco mundial, Banco de la república, etc).
 
-PIB per capita: World Data Bank 
-% del PIB en importaciones: World Data Bank
+Se utilizarán las siguientes bases de datos en un periodo de tiempo de 60 años para verificar la relación económica estudiada en el país Colombia.
 
-________________________________________________________________________________
+PIB per capita: World Data Bank.   
+
+% del PIB en importaciones: World Data Bank.
+
+
+_______________________________________________________________________________
 
 c) Haga las transformaciones que considere pertinentes para poder ver la relación entre ambas variables.
 
@@ -121,5 +125,17 @@ _______________________________________________________________________________
 
 e) Interprete los resultados en función de la teoría que recopilo en el literal a.
 
+Los resultados obtenidos en la gráfica de correlación nos marcan un grado de asociación de 0.85 por lo cual podemos inferir que nuestras dos variables están fuertemente relacionadas. Este grado de relación indica una asociación fuerte y positiva. Ademas, los resultados de la gráfica de dispersión nos confirman doblemente esta relación positiva y directa entre las variables. Se puede observar como los puntos alrededor de la nube están distribuidos de buena manera y no parece haber un sesgo, aun así, se sugiere hacer una prueba para comprobarlo. Por otro lado, desde el punto de vista del modelo de regresión podemos observar; un grado de significancia elevado (tres estrellas para nuestra variable) y una relación positiva entre esta y la variable explicada. Un coeficiente de correlación (r2) de 0.71 y una p - value que indica significancia estadística. 
 
+Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra un comportamiento exponencial lo cual ratifica los resultados anteriores.
+
+_______________________________________________________________________________
+
+## Referencias
+
+Blanchard O. Melino A. & Johnson D. R. (2003). Macroeconomics (2nd Canadian). Prentice Hall.
+
+Acemoglu, D., Laibson, D., &#38; List, J. (2017). Economía ([edition missing]). Antoni Bosch Editor, S.A. Retrieved from https://www.perlego.com/book/2809312/economa-pdf (Original work published 2017)
+
+Wooldridge, J. M. (2010). INTRODUCCION A LA ECONOMETRIA: UN ENFOQUE MODERNO (4a. ed.). MEXICO: CENGAGE LEARNING.
 
