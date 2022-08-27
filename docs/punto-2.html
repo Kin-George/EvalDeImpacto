@@ -23,7 +23,7 @@
 <meta name="author" content="Jorge Orozco" />
 
 
-<meta name="date" content="2022-08-25" />
+<meta name="date" content="2022-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -229,67 +229,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="punto-2.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico de correlacion</span></span>
 <span id="cb6-2"><a href="punto-2.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PerformanceAnalytics)</span>
 <span id="cb6-3"><a href="punto-2.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chart.Correlation</span>(Base, <span class="at">histogram =</span> <span class="cn">TRUE</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>Grafico de dispersion:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="punto-2.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico de dispersion</span></span>
 <span id="cb7-2"><a href="punto-2.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-3"><a href="punto-2.html#cb7-3" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Base, <span class="fu">aes</span>(<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>, <span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>))<span class="sc">+</span><span class="fu">geom_point</span>()</span>
 <span id="cb7-4"><a href="punto-2.html#cb7-4" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span>g<span class="sc">+</span><span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;Grafico de dispersion&quot;</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;PIB per capita&quot;</span>, <span class="at">y=</span><span class="st">&quot;% PIB en Importaciones&quot;</span>,<span class="at">caption=</span><span class="st">&quot;Autor: Jorge Orozco&quot;</span>)</span>
 <span id="cb7-5"><a href="punto-2.html#cb7-5" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>Modelo de regresion:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="punto-2.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo</span></span>
-<span id="cb8-2"><a href="punto-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>,<span class="at">data=</span>Base)</span>
+<span id="cb8-2"><a href="punto-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>,<span class="at">data=</span>Base)</span>
 <span id="cb8-3"><a href="punto-2.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Base$`PIB per capita` ~ Base$`% PIB Imports`, data = Base)
+## lm(formula = Base$`% PIB Imports` ~ Base$`PIB per capita`, data = Base)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1286.4  -488.5  -113.4   590.7  1355.9 
+## -3.6531 -1.4154 -0.2257  1.3837  4.1637 
 ## 
 ## Coefficients:
-##                      Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)          -1362.48     426.80  -3.192  0.00225 ** 
-## Base$`% PIB Imports`   308.65      24.88  12.407  &lt; 2e-16 ***
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           7.8772891  0.7584756   10.39    5e-15 ***
+## Base$`PIB per capita` 0.0023312  0.0001879   12.41   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 716.4 on 60 degrees of freedom
+## Residual standard error: 1.969 on 60 degrees of freedom
 ## Multiple R-squared:  0.7195, Adjusted R-squared:  0.7149 
 ## F-statistic: 153.9 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="punto-2.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Base, <span class="fu">aes</span>(<span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>,<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Pib per capita&quot;</span>,<span class="at">y=</span><span class="st">&quot;% del PIB en importaciones&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Modelo de regresion cuadratico:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="punto-2.html#cb11-1" aria-hidden="true" tabindex="-1"></a>modelo2<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="punto-2.html#cb11-1" aria-hidden="true" tabindex="-1"></a>modelo2<span class="ot">&lt;-</span><span class="fu">lm</span>(Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span><span class="sc">~</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb11-2"><a href="punto-2.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Base$`PIB per capita` ~ Base$`% PIB Imports`^2)
+## lm(formula = Base$`% PIB Imports` ~ Base$`PIB per capita`^2)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1286.4  -488.5  -113.4   590.7  1355.9 
+## -3.6531 -1.4154 -0.2257  1.3837  4.1637 
 ## 
 ## Coefficients:
-##                      Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)          -1362.48     426.80  -3.192  0.00225 ** 
-## Base$`% PIB Imports`   308.65      24.88  12.407  &lt; 2e-16 ***
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           7.8772891  0.7584756   10.39    5e-15 ***
+## Base$`PIB per capita` 0.0023312  0.0001879   12.41   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 716.4 on 60 degrees of freedom
+## Residual standard error: 1.969 on 60 degrees of freedom
 ## Multiple R-squared:  0.7195, Adjusted R-squared:  0.7149 
 ## F-statistic: 153.9 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="punto-2.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Base, <span class="fu">aes</span>(<span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span>,<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Pib per capita&quot;</span>,<span class="at">y=</span><span class="st">&quot;% del PIB en importaciones&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="punto-2.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Base, <span class="fu">aes</span>(<span class="at">y=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">% PIB Imports</span><span class="st">`</span>,<span class="at">x=</span>Base<span class="sc">$</span><span class="st">`</span><span class="at">PIB per capita</span><span class="st">`</span><span class="sc">^</span><span class="dv">2</span>))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Pib per capita&quot;</span>,<span class="at">y=</span><span class="st">&quot;% del PIB en importaciones&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 _______________________________________________________________________________</p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Interprete los resultados en función de la teoría que recopilo en el literal a.</li>
 </ol>
 <p>Los resultados obtenidos en la gráfica de correlación nos marcan un grado de asociación de 0.85 por lo cual podemos inferir que nuestras dos variables están fuertemente relacionadas. Este grado de relación indica una asociación fuerte y positiva. Ademas, los resultados de la gráfica de dispersión nos confirman doblemente esta relación positiva y directa entre las variables. Se puede observar como los puntos alrededor de la nube están distribuidos de buena manera y no parece haber un sesgo, aun así, se sugiere hacer una prueba para comprobarlo. Por otro lado, desde el punto de vista del modelo de regresión podemos observar; un grado de significancia elevado (tres estrellas para nuestra variable) y una relación positiva entre esta y la variable explicada. Un coeficiente de correlación (r2) de 0.71 y una p - value que indica significancia estadística.</p>
-<p>Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra un comportamiento exponencial lo cual ratifica los resultados anteriores.</p>
+<p>Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra el mismo comportamiento que el modelo simple.</p>
 <hr />
 <div id="referencias" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Referencias<a href="punto-2.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h2>

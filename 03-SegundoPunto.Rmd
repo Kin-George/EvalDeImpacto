@@ -109,7 +109,7 @@ Modelo de regresion:
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 # Modelo
-modelo<-lm(Base$`PIB per capita`~Base$`% PIB Imports`,data=Base)
+modelo<-lm(Base$`% PIB Imports`~Base$`PIB per capita`,data=Base)
 summary(modelo)
 ggplot(data=Base, aes(y=Base$`% PIB Imports`,x=Base$`PIB per capita`))+geom_point(col="blue")+geom_smooth(method="lm",col="black",size=0.5)+labs(x="Pib per capita",y="% del PIB en importaciones")
 ```
@@ -117,9 +117,9 @@ ggplot(data=Base, aes(y=Base$`% PIB Imports`,x=Base$`PIB per capita`))+geom_poin
 Modelo de regresion cuadratico:
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-modelo2<-lm(Base$`PIB per capita`~Base$`% PIB Imports`^2)
+modelo2<-lm(Base$`% PIB Imports`~Base$`PIB per capita`^2)
 summary(modelo2)
-ggplot(data=Base, aes(y=Base$`PIB per capita`,x=Base$`PIB per capita`^2))+geom_point(col="blue")+geom_smooth(method="lm",col="black",size=0.5)+labs(x="Pib per capita",y="% del PIB en importaciones")
+ggplot(data=Base, aes(y=Base$`% PIB Imports`,x=Base$`PIB per capita`^2))+geom_point(col="blue")+geom_smooth(method="lm",col="black",size=0.5)+labs(x="Pib per capita",y="% del PIB en importaciones")
 ```
 _______________________________________________________________________________
 
@@ -127,7 +127,7 @@ e) Interprete los resultados en función de la teoría que recopilo en el litera
 
 Los resultados obtenidos en la gráfica de correlación nos marcan un grado de asociación de 0.85 por lo cual podemos inferir que nuestras dos variables están fuertemente relacionadas. Este grado de relación indica una asociación fuerte y positiva. Ademas, los resultados de la gráfica de dispersión nos confirman doblemente esta relación positiva y directa entre las variables. Se puede observar como los puntos alrededor de la nube están distribuidos de buena manera y no parece haber un sesgo, aun así, se sugiere hacer una prueba para comprobarlo. Por otro lado, desde el punto de vista del modelo de regresión podemos observar; un grado de significancia elevado (tres estrellas para nuestra variable) y una relación positiva entre esta y la variable explicada. Un coeficiente de correlación (r2) de 0.71 y una p - value que indica significancia estadística. 
 
-Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra un comportamiento exponencial lo cual ratifica los resultados anteriores.
+Todo el análisis anterior nos confirma que tal cual indicaba la teoría económica acerca de la relación de estas dos variables parece que se cumple en el caso de Colombia, se concluye pues que a medida que crece el pib per cápita a su vez crece el % de importaciones. Esto es lógico ya que a mayor ingreso disponible para el país mayor va a ser su adquisición de bienes y servicios. Finalmente, el modelo cuadrático muestra el mismo comportamiento que el modelo simple.
 
 _______________________________________________________________________________
 
